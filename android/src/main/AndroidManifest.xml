@@ -1,0 +1,30 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.inbodysdk">
+<application>
+  <receiver android:name="com.inbody.inbodyanp.IB_ANP_ReceiverSMSCall"
+    android:permission="android.permission.BROADCAST_SMS"
+    android:exported="true">
+    <intent-filter android:priority="9999">
+      <action android:name="android.intent.action.PHONE_STATE" />
+      <action android:name="android.intent.action.SMS_RECEIVED" />
+      <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+      <category android:name="android.intent.category.DEFAULT" />
+    </intent-filter>
+  </receiver>
+
+  <service
+    android:name="com.inbody.inbodyanp.IB_ANP_Notification"
+    android:enabled="true"
+    android:label="InBody Alert Notification"
+    android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
+    android:exported="true">
+    <intent-filter android:priority="9999">
+      <action android:name="android.service.notification.NotificationListenerService" />
+      <category android:name="android.intent.category.DEFAULT" />
+    </intent-filter>
+  </service>
+
+  <service android:name="com.inbody.inbodyanp.IB_ANP_NotificationMonitorService"/>
+
+</application>
+</manifest>
